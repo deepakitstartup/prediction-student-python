@@ -10,14 +10,16 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_selection import SelectKBest, chi2
 from sklearn.svm import LinearSVC  # Support Vector Machine Classifier model
 #import json
+import numpy as np
+import pandas as pd
 
 #student = '{"name": "Bob", "languages": ["English", "Fench"]}'
 #student_dict = json.loads(student)
 
 
 """ Read data file as DataFrame """
-df = pd.read_csv("./student-mat.csv", sep=";")
-
+#df = pd.read_csv("./student-mat.csv", sep=";")
+df = pd.read_csv("./student-mat.csv")
 """ Import ML helpers """
 
 """ Split Data into Training and Testing Sets """
@@ -87,28 +89,30 @@ app = Flask(__name__)
 # returns the data that we send when we use POST.
 @app.route('/', methods=['GET', 'POST'])
 def home():
-	if(request.method == 'GET'):
-		print("\nStudent Performance Prediction")
+    if(request.method == 'GET'):
+        print("\nStudent Performance Prediction")
 
     # For each feature, encode to categorical values
-		class_le = LabelEncoder()
-		for column in df[["school", "sex", "address", "famsize", "Pstatus", "Mjob", "Fjob", "reason", "guardian", "schoolsup", "famsup", "paid", "activities", "nursery", "higher", "internet", "romantic"]].columns:
-			df[column] = class_le.fit_transform(df[column].values)
+        class_le = LabelEncoder()
+        for column in df[["school", "sex", "address", "famsize", "Pstatus", "Mjob", "Fjob", "reason", "guardian", "schoolsup", "famsup", "paid", "activities", "nursery", "higher", "internet", "romantic"]].columns:
+            df[column] = class_le.fit_transform(df[column].values)
 
     # Encode G1, G2, G3 as pass or fail binary values
-		for i, row in df.iterrows():
-    			if row["G1"] >= 10:
-				df["G1"][i] = 1
-			else:
-            			df["G1"][i] = 0
-			if row["G2"] >= 10:
-            			df["G2"][i] = 1
-        		else:
-            			df["G2"][i] = 0
-		        if row["G3"] >= 10:
-            			df["G3"][i] = 1
-        		else:
-            			df["G3"][i] = 0
+        for i, row in df.iterrows():
+                if row["G1"] >= 10:
+                df["G1"][i] = 1
+        else:
+            df["G1"][i] = 0
+
+        if row["G2"] >= 10:
+            df["G2"][i] = 1
+        else:
+            df["G2"][i] = 0
+
+        if row["G3"] >= 10:
+            df["G3"][i] = 1
+        else:
+            df["G3"][i] = 0
 
     # Target values are G3
     y = df.pop("G3")
@@ -119,7 +123,6 @@ def home():
     print("\n\nModel Accuracy Knowing G1 & G2 Scores")
     print("=====================================")
     train_and_score(X, y)
-
     # Remove grade report 2
     X.drop(["G2"], axis = 1, inplace=True)
     print("\n\nModel Accuracy Knowing Only G1 Score")
@@ -131,10 +134,8 @@ def home():
     print("\n\nModel Accuracy Without Knowing Scores")
     print("=====================================")
     train_and_score(X, y)
-
-
-		data = "hello world"
-		return jsonify({'data': data}) 
+    data = "hello world"
+    return jsonify({'data': data}) 
 
 
 # A simple function to calculate the square of a number 
@@ -144,10 +145,10 @@ def home():
 @app.route('/home/<int:num>', methods = ['GET']) 
 def disp(num): 
 
-	return jsonify({'data': num**2}) 
+    return jsonify({'data': num**2}) 
 
 
 # driver function 
 if __name__ == '__main__': 
 
-	app.run(debug = True) 
+    app.run(debug = True) 
