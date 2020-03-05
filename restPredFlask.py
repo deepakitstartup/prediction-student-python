@@ -99,18 +99,16 @@ def home():
 		for i, row in df.iterrows():
     			if row["G1"] >= 10:
 				df["G1"][i] = 1
-        else:
-            df["G1"][i] = 0
-
-        if row["G2"] >= 10:
-            df["G2"][i] = 1
-        else:
-            df["G2"][i] = 0
-
-        if row["G3"] >= 10:
-            df["G3"][i] = 1
-        else:
-            df["G3"][i] = 0
+			else:
+            			df["G1"][i] = 0
+			if row["G2"] >= 10:
+            			df["G2"][i] = 1
+        		else:
+            			df["G2"][i] = 0
+		        if row["G3"] >= 10:
+            			df["G3"][i] = 1
+        		else:
+            			df["G3"][i] = 0
 
     # Target values are G3
     y = df.pop("G3")
