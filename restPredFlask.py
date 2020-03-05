@@ -87,7 +87,7 @@ app = Flask(__name__)
 # on the terminal type: curl http://127.0.0.1:5000/
 # returns hello world when we use GET.
 # returns the data that we send when we use POST.
-@app.route('/predictMatrix', methods=['GET', 'POST'])
+@app.route('/predictionMatrix', methods=['GET', 'POST'])
 def home():
     if(request.method == 'GET'):
         print("\nStudent Performance Prediction")
@@ -143,7 +143,7 @@ def home():
 # the number to be squared is sent in the URL when we use GET 
 # on the terminal type: curl http://127.0.0.1:5000 / home / 10 
 # this returns 100 (square of 10) 
-@app.route('/predictMatrix/student/<int:num>', methods = ['GET']) 
+@app.route('/predictionMatrix/student/<int:num>', methods = ['GET']) 
 def disp(num): 
 
     return jsonify({'data': num**2}) 
