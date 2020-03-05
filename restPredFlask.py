@@ -18,8 +18,8 @@ import pandas as pd
 
 
 """ Read data file as DataFrame """
-#df = pd.read_csv("./student-mat.csv", sep=";")
-df = pd.read_csv("./student-mat.csv")
+df = pd.read_csv("./student-mat.csv", sep=";")
+#df = pd.read_csv("./student-mat.csv")
 """ Import ML helpers """
 
 """ Split Data into Training and Testing Sets """
