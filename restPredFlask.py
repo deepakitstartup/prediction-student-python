@@ -50,7 +50,6 @@
 
 
     """ False Fail Rate """
-		
 
 
     def ffr(confusion_matrix):
@@ -98,22 +97,23 @@
             for column in df[["school", "sex", "address", "famsize", "Pstatus", "Mjob", "Fjob", "reason", "guardian", "schoolsup", "famsup", "paid", "activities", "nursery", "higher", "internet", "romantic"]].columns:
                 df[column] = class_le.fit_transform(df[column].values)
 
+
         # Encode G1, G2, G3 as pass or fail binary values
             for i, row in df.iterrows():
             if row["G1"] >= 10:
-                df["G1"][i] = 1
+                    df["G1"][i] = 1
             else:
-                df["G1"][i] = 0
+                    df["G1"][i] = 0
 
             if row["G2"] >= 10:
-                df["G2"][i] = 1
+                    df["G2"][i] = 1
             else:
-                df["G2"][i] = 0
+                    df["G2"][i] = 0
 
             if row["G3"] >= 10:
-                df["G3"][i] = 1
+                    df["G3"][i] = 1
             else:
-                df["G3"][i] = 0
+                    df["G3"][i] = 0
 
         # Target values are G3
         y = df.pop("G3")
