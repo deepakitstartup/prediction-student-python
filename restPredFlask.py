@@ -145,8 +145,8 @@ def home():
 # this returns 100 (square of 10) 
 @app.route('/predictionMatrix/student/<string:data>', methods = ['GET']) 
 def disp(data): 
-
-    return jsonify({'data': data}) 
+    
+    return jsonify({'data': data.decode('base64', 'strict') }) 
 
 
 # driver function 
