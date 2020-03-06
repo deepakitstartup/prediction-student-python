@@ -12,6 +12,7 @@ from sklearn.svm import LinearSVC  # Support Vector Machine Classifier model
 #import json
 import numpy as np
 import pandas as pd
+import urllib.parse
 
 #student = '{"name": "Bob", "languages": ["English", "Fench"]}'
 #student_dict = json.loads(student)
@@ -145,8 +146,8 @@ def home():
 # this returns 100 (square of 10) 
 @app.route('/predictionMatrix/student/<string:studentID>', methods = ['GET']) 
 def disp(studentID): 
-    
-    return jsonify({'data': studentID }) 
+
+    return jsonify({'data': urllib.parse.unquote(studentID) }) 
 
 
 # driver function 
