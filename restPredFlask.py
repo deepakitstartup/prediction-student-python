@@ -146,7 +146,7 @@ def home():
 @app.route('/predictionMatrix/student/<string:data>', methods = ['GET']) 
 def disp(data): 
     
-    return jsonify({'data': data.decode('UTF-8', 'strict') }) 
+    return jsonify({'data': data.decode("UTF-8") }) 
 
 
 # driver function 
