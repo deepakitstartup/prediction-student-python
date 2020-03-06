@@ -147,7 +147,7 @@ def home():
 @app.route('/predictionMatrix/student/<string:studentID>', methods = ['GET']) 
 def disp(studentID): 
 
-    return jsonify({'data': urllib.parse.unquote(studentID) }) 
+    return jsonify({'data': urllib.parse.unquote_plus(urllib.parse.unquote(studentID)) }) 
 
 
 # driver function 
