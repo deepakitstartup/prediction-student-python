@@ -143,10 +143,10 @@ def home():
 # the number to be squared is sent in the URL when we use GET 
 # on the terminal type: curl http://127.0.0.1:5000 / home / 10 
 # this returns 100 (square of 10) 
-@app.route('/predictionMatrix/student/<string:data>', methods = ['GET']) 
-def disp(data): 
-    print("-------"+type(data))
-    return jsonify({'data': data }) 
+@app.route('/predictionMatrix/student/<string:studentID>', methods = ['GET']) 
+def disp(studentID): 
+    
+    return jsonify({'data': studentID }) 
 
 
 # driver function 
