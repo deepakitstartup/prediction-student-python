@@ -46,9 +46,9 @@ def train_model(d, numeric_var_cols, categorical_var_cols, target):
     return s
 
 
-@app.route('/predict_model', methods=['POST'])
+@app.route('/predict_model', methods=['GET'])
 def predict_model():
-    if request.method == 'POST':
+    if request.method == 'GET':
         loaded_res = load_pickle("trained_model.pickle")
 
         age = int(request.args.get("age"))
