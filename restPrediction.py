@@ -42,7 +42,7 @@ def train_model(d, numeric_var_cols, categorical_var_cols, target):
     res = reg_model.fit()
     res.save("trained_model.pickle")
     print(res.summary())
-    s = "Trained model score is " + str(round(res.rsquared*100, 2)) + " %"
+    s = "The Prediction model is trained /n. Trained model score is " + str(round(res.rsquared*100, 2)) + " %"
     return s
 
 
@@ -56,7 +56,7 @@ def predict_model():
         l = [age, g2_score]
         rec = np.array(l)
         prediction = np.round(loaded_res.predict(rec))
-        return "Predicted G3 Score of student is: " + str(prediction[0])
+        return "Predicted Final Score of student is: " + str(prediction[0]) +"/n The driving parameters are Age and Subject 1 & Subject 2 Score"
 
 
 @app.route('/train_model', methods=['GET'])
