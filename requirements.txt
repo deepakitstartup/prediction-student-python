@@ -10,3 +10,4 @@ psycopg2==2.7.5
 Scikit-learn==0.20
 numpy==1.18.1
 pandas==1.0.1
+statsmodels=0.8.0
