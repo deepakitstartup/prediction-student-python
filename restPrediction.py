@@ -43,7 +43,7 @@ def train_model(d, numeric_var_cols, categorical_var_cols, target):
     res = reg_model.fit()
     res.save("trained_model.pickle")
     print(res.summary())
-    s = "The Prediction model is trained at" +datetime.now()+ ". Trained model score is " + str(round(res.rsquared*100, 2)) + " %"
+    s = "The Prediction model is trained at" +str(datetime.now())+ ". Trained model score is " + str(round(res.rsquared*100, 2)) + " %"
     return s
 
 
