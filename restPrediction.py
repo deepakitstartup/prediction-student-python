@@ -4,6 +4,7 @@ import statsmodels.api as sm
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from datetime import datetime
 
 pd.set_option('display.max_rows', 500)
 pd.set_option('display.max_columns', 500)
@@ -42,7 +43,7 @@ def train_model(d, numeric_var_cols, categorical_var_cols, target):
     res = reg_model.fit()
     res.save("trained_model.pickle")
     print(res.summary())
-    s = "The Prediction model is trained /n. Trained model score is " + str(round(res.rsquared*100, 2)) + " %"
+    s = "The Prediction model is trained at" +datetime.now()+ ". Trained model score is " + str(round(res.rsquared*100, 2)) + " %"
     return s
 
 
