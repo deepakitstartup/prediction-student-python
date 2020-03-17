@@ -57,7 +57,7 @@ def predict_model():
         l = [age, g2_score]
         rec = np.array(l)
         prediction = np.round(loaded_res.predict(rec))
-        return "Predicted Final Score of student is: " + str(prediction[0]) +". The driving parameters are Age, Maths & Science Score"
+        return "Predicted Final Score of student is: " + str(prediction[0]) 
 
 
 @app.route('/train_model', methods=['GET'])
